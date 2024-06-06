@@ -32,4 +32,5 @@ py_test(
         ":textforge",
         "@pip//jinja2",
     ],
+    visibility = ["//visibility:public"],
 )
