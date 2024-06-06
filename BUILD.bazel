@@ -1,0 +1,35 @@
+load("@rules_python//python:defs.bzl", "py_binary")
+
+py_library(
+    name = "forge_libs",
+    srcs = glob(["src/*.py"], exclude=[
+        "src/__main__.py",
+        "src/textforgetest.py"
+    ]),
+    imports = ["src"],
+    deps = [],
+    visibility = ["//visibility:private"],
+)
+
+py_binary(
+    name = "textforge",
+    srcs = [
+        "src/__main__.py",
+    ],
+    main = "__main__.py",
+    deps = [
+        ":forge_libs",
+        "@pip//jinja2",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+py_test(
+    name = "test_main",
+    main = "textforgetest.py",
+    srcs = ["src/textforgetest.py"],
+    deps = [
+        ":textforge",
+        "@pip//jinja2",
+    ],
+)
