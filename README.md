@@ -1,4 +1,4 @@
-![TextForge](.github\img\imagen.webp)
+![TextForge](.github/img/imagen.webp)
 
 # TextForge
 
